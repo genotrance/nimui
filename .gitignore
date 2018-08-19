@@ -1,0 +1,5 @@
+nimui
+nimcache
+*.exe
+*.swp
+tui*
