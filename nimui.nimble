@@ -20,6 +20,9 @@ if detectOs(Windows):
     cmd = "cmd /c "
     ext = ".exe"
 
+if not detectOs(Windows):
+    foreignDep "libgtk-3-dev"
+
 task setup, "Download and generate":
     exec cmd & "nimgen nimui.cfg"
 
