@@ -7,11 +7,7 @@ __Installation__
 Nimui is currently a work in progress. It can be installed via [Nimble](https://github.com/nim-lang/nimble):
 
 ```
-> nimble install nimgen
-
-> git clone https://github.com/genotrance/nimui
-> cd nimui
-> nimble install -y
+> nimble install https://github.com/genotrance/nimui
 ```
 
 This will download, wrap and install nimui in the standard Nimble package location, typically ~/.nimble. Once installed, it can be imported into any Nim program.

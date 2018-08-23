@@ -21,10 +21,12 @@ if detectOs(Windows):
     ext = ".exe"
 
 task setup, "Download and generate":
+    withDir "..":
+        exec cmd & "nimble install nimgen -y"
     exec cmd & "nimgen nimui.cfg"
 
 before install:
     setupTask()
 
 task test, "Test nimui":
-    exec "nim cpp --app:gui tests/tui.nim"
+    exec "nim cpp --app:gui -r tests/tui.nim"
