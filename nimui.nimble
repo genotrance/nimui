@@ -14,22 +14,17 @@ requires "nimgen >= 0.4.0"
 import distros
 
 var cmd = ""
-var ldpath = ""
-var ext = ""
 if detectOs(Windows):
-    cmd = "cmd /c "
-    ext = ".exe"
+  cmd = "cmd /c "
 
 if not detectOs(Windows):
-    foreignDep "libgtk-3-dev"
+  foreignDep "libgtk-3-dev"
 
 task setup, "Download and generate":
-    withDir "..":
-        exec cmd & "nimble install nimgen -y"
-    exec cmd & "nimgen nimui.cfg"
+  exec cmd & "nimgen nimui.cfg"
 
 before install:
-    setupTask()
+  setupTask()
 
 task test, "Test nimui":
-    exec "nim cpp --app:gui -r tests/tui.nim"
+  exec "nim cpp --app:gui -r tests/tui.nim"
