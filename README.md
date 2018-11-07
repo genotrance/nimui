@@ -7,8 +7,6 @@ __Installation__
 Nimui is currently a work in progress. It can be installed via [Nimble](https://github.com/nim-lang/nimble):
 
 ```
-> nimble install nimgen
-
 > nimble install https://github.com/genotrance/nimui
 ```
 

@@ -11,20 +11,24 @@ skipDirs = @["tests"]
 
 requires "nimgen >= 0.4.0"
 
-import distros
-
-var cmd = ""
-if detectOs(Windows):
-  cmd = "cmd /c "
-
 if not detectOs(Windows):
   foreignDep "libgtk-3-dev"
 
-task setup, "Download and generate":
-  exec cmd & "nimgen nimui.cfg"
+var
+  name = "nimui"
+  cmd = when defined(Windows): "cmd /c " else: ""
+
+mkDir(name)
+
+task setup, "Checkout and generate":
+  if gorgeEx(cmd & "nimgen").exitCode != 0:
+    withDir(".."):
+      exec "nimble install nimgen -y"
+  exec cmd & "nimgen " & name & ".cfg"
 
 before install:
   setupTask()
 
 task test, "Test nimui":
   exec "nim cpp --app:gui -r tests/tui.nim"
+
