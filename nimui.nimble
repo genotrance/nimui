@@ -11,7 +11,7 @@ skipDirs = @["tests"]
 
 requires "nimgen >= 0.4.0"
 
-if not detectOs(Windows):
+if not defined(Windows):
   foreignDep "libgtk-3-dev"
 
 var
