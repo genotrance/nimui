@@ -11,6 +11,7 @@ skipDirs = @["tests"]
 
 requires "nimgen >= 0.4.0"
 
+import distros
 if not defined(Windows):
   foreignDep "libgtk-3-dev"
 
